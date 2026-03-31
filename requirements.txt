@@ -1,0 +1,4 @@
+kafka-python==2.0.2
+minio==7.2.3
+pandas==2.2.1
+duckdb==0.10.2
