@@ -54,5 +54,20 @@ services:
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin
 
+  query:
+    build:
+      context: .
+      dockerfile: Dockerfile.query
+    depends_on:
+      - kafka
+      - minio
+      - consumer
+    environment:
+      MINIO_ENDPOINT: minio
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    # Chạy một lần và dừng (không để khởi động lại liên tục)
+    command: python query_s3_direct.py
+
 volumes:
   minio-data:
